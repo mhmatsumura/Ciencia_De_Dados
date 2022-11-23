@@ -56,8 +56,8 @@ Ex: wsl --install -d <DistroName>
 
 5. Instalar o rapids usando instruções da nvidia no site https://rapids.ai/start.html#get-rapids. Executar o comando gerado no console Linux(UBUNTU). Eu usei a seguinte configuração(demora 15 minutos dependendo da velocidade da internet):
 
-	>> conda create -n rapids-22.08 -c rapidsai -c nvidia -c conda-forge  \
-    rapids=22.08 python=3.9 cudatoolkit=11.5 \
+	>> conda create -n rapids-22.10 -c rapidsai -c nvidia -c conda-forge  \
+    rapids=22.10 python=3.9 cudatoolkit=11.5 \
     jupyterlab
 
 

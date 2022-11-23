@@ -1,4 +1,5 @@
 
+
 * COMANDO PARA VERIFICAR NO POWERSHELL A VERSAO DA BUILD DO WINDOWS10.
 
 	>> [System.Enviroment]::OSVersion.Version
@@ -69,7 +70,7 @@ Ex: wsl --install -d <DistroName>
 	#
 	# To activate this environment, use
 	#
-	#     $ conda activate rapids-22.08
+	#     $ conda activate rapids-22.10
 	#
 	# To deactivate an active environment, use
 	#
@@ -77,13 +78,13 @@ Ex: wsl --install -d <DistroName>
 
 5.3 Quando terminar a instalação do rapids ative o ambiente rapids: 
 
-	>> conda activate rapids-22.08
+	>> conda activate rapids-22.10
 
 6. Instalar o pacote nb_conda e linkar o ambiente do conda no notebook jupyter usando dois comandos:
 
 	>> conda install nb_conda
 
-	>> python -m ipykernel install --user --name rapids-22.08 --display-name "Python 3.9 (rapids-22.08)"
+	>> python -m ipykernel install --user --name rapids-22.10 --display-name "Python 3.9 (rapids-22.10)"
 
 
 7. Iniciar o servidor jupyter no linux(Este passo deve ser feito sempre que religar o PC).
@@ -108,13 +109,13 @@ Tutoriais e exemplos de utilização do Rapids machine learning:
 	git clone https://github.com/rapidsai-community/notebooks-contrib.git
 
 
-Editar arquivo .bashrc para automatizar a ativacao do ambiente rapids-20.08 e a inicialização do servidor jupyter:
+Editar arquivo .bashrc para automatizar a ativacao do ambiente rapids-20.10 e a inicialização do servidor jupyter:
 
 	>> nano ~/.bashrc
 
 adicionar essas duas linhas no final do arquivo .bashrc:
 
-	>> conda activate rapids-22.08
+	>> conda activate rapids-22.10
 	>> jupyter notebook --no-browser
 
 #comando para kill o processo na gpu pelo pid

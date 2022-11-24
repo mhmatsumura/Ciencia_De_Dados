@@ -1,5 +1,6 @@
 
 
+
 * COMANDO PARA VERIFICAR NO POWERSHELL A VERSAO DA BUILD DO WINDOWS10.
 
 	>> [System.Enviroment]::OSVersion.Version
@@ -90,7 +91,15 @@ Ex: wsl --install -d <DistroName>
 7. Iniciar o servidor jupyter no linux(Este passo deve ser feito sempre que religar o PC).
    O argumento --no-browser é porque ele não consegue abrir o browser do windows a partir do linux.:
 
-	>> jupyter notebook --no-browser
+
+
+	>> jupyter notebook --no-browser 
+
+			OU
+
+	>> jupyter notebook --no-browser --allow-root
+
+
 
 8. Abrir um Browser qualquer no Windows e acessar a pagina do jupyter no endereço indicado na tela do console Linux.(substitua o token pelo seu):
 
@@ -116,7 +125,11 @@ Editar arquivo .bashrc para automatizar a ativacao do ambiente rapids-20.10 e a 
 adicionar essas duas linhas no final do arquivo .bashrc:
 
 	>> conda activate rapids-22.10
-	>> jupyter notebook --no-browser
+	>> jupyter notebook --no-browser 
+
+			OU
+
+	>> jupyter notebook --no-browser --allow-root
 
 #comando para kill o processo na gpu pelo pid
  	>> nvidia-smi | grep 'python' | awk '{ print $3 }' | xargs -n1 kill -9

@@ -69,7 +69,7 @@ Ex: wsl --install -d <DistroName>
 
 	done
 	#
-	# To activate this environment, use
+	# To activate this environment, usey
 	#
 	#     $ conda activate rapids-22.10
 	#
@@ -85,7 +85,7 @@ Ex: wsl --install -d <DistroName>
 
 	>> conda install nb_conda
 
-	>> python -m ipykernel install --user --name rapids-22.10 --display-name "Python 3.9 (rapids-22.10)"
+	>> python -m ipykernel install --user --name rapids-22.10 --display-name "Python 3.9 (mauricio_rapids-22.10)"
 
 
 7. Iniciar o servidor jupyter no linux(Este passo deve ser feito sempre que religar o PC).
@@ -136,3 +136,17 @@ adicionar essas duas linhas no final do arquivo .bashrc:
 
 #comando para resetar a gpu
 	>> sudo nvidia-smi -r
+
+#comandos
+
+	nvidia-smi
+	nvcc --version
+	conda info --envs
+	conda env list
+	conda deactivate
+	conda env remove -n rapids-20.10
+	find / -type d -name cuda 2>/dev/null
+
+INSTALAR CUDNN  (para deep learning)
+
+	conda install -c conda-forge cudnn

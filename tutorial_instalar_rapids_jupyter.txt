@@ -138,6 +138,14 @@ adicionar essas duas linhas no final do arquivo .bashrc:
 
 #comando para resetar a gpu
 	>> sudo nvidia-smi -r
+	
+================== cria ambiente python no conda sem rapids  ======================
+
+conda create -n meu_python_3.10.8 -c conda-forge python=3.10
+conda activate meu_python_3.10.8
+python -m ipykernel install --user --name meu_python_3.10.8 --display-name "meu_python_3.10.8"
+
+===================================================================================
 
 #comandos
 

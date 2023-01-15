@@ -126,6 +126,8 @@ Editar arquivo .bashrc para automatizar a ativacao do ambiente rapids-20.10 e a 
 
 adicionar essas duas linhas no final do arquivo .bashrc:
 
+        
+        >> rclone sync /home/mhmatsumura/miniconda3/CIENCIA_DE_DADOS meu_gdrive:/CIENCIA_DE_DADOS_GDRIVE #SINCRONIZAR A PASTA LOCAL NO GOOGGLE DRIVE
 	>> conda activate rapids-22.10
 	>> jupyter notebook --no-browser 
 
@@ -172,12 +174,9 @@ https://ostechnix.com/install-rclone-in-linux/
 
 ==============================================================
 
-SINCRONIZAR A PASTA LOCAL NO GOOGGLE DRIVE (--daemon força pra rodar em background):
+SINCRONIZAR A PASTA LOCAL NO GOOGGLE DRIVE:
 
-rclone mount meu_gdrive:/CIENCIA_DE_DADOS_GDRIVE /home/mhmatsumura/miniconda3/CIENCIA_DE_DADOS --daemon
-
-DESSINCRONIZAR A PASTA
-fusermount -u /home/mhmatsumura/miniconda3/CIENCIA_DE_DADOS
+rclone sync /home/mhmatsumura/miniconda3/CIENCIA_DE_DADOS meu_gdrive:/CIENCIA_DE_DADOS_GDRIVE
 
 
 

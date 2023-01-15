@@ -147,6 +147,42 @@ python -m ipykernel install --user --name meu_python_3.10.8 --display-name "meu_
 
 ===================================================================================
 
+==============================================================
+	RCLONE PARA FAZER BACKUP NO GOOGLE DRIVE
+========== PARA INSTALAR RCLONE QUANDO APT FALHAR ============
+
+colar no arquivo etc/apt/source.list a linha abaixo:
+
+deb http://packages.azlux.fr/debian/ testing main
+
+executar:
+
+sudo apt update
+sudo apt-get update
+
+instalar rclone:
+
+sudo apt install rclone
+
+==============================================================
+
+para configurar o remote(MEU_GDRIVE) do gdrive e sincronizar com a pasta local seguir este tutorial:
+
+https://ostechnix.com/install-rclone-in-linux/
+
+==============================================================
+
+SINCRONIZAR A PASTA LOCAL NO GOOGGLE DRIVE (--daemon força pra rodar em background):
+
+rclone mount meu_gdrive:/CIENCIA_DE_DADOS_GDRIVE /home/mhmatsumura/miniconda3/CIENCIA_DE_DADOS --daemon
+
+DESSINCRONIZAR A PASTA
+fusermount -uz /home/mhmatsumura/miniconda3/CIENCIA_DE_DADOS
+
+
+
+===============================================================
+
 #comandos
 
 	nvidia-smi

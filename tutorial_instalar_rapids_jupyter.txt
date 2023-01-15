@@ -177,7 +177,7 @@ SINCRONIZAR A PASTA LOCAL NO GOOGGLE DRIVE (--daemon força pra rodar em backgro
 rclone mount meu_gdrive:/CIENCIA_DE_DADOS_GDRIVE /home/mhmatsumura/miniconda3/CIENCIA_DE_DADOS --daemon
 
 DESSINCRONIZAR A PASTA
-fusermount -uz /home/mhmatsumura/miniconda3/CIENCIA_DE_DADOS
+fusermount -u /home/mhmatsumura/miniconda3/CIENCIA_DE_DADOS
 
 
 

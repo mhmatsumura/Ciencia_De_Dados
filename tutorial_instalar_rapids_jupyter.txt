@@ -158,7 +158,7 @@ python -m ipykernel install --user --name meu_python_3.10.8 --display-name "meu_
 	find / -type d -name cuda 2>/dev/null
 	jupyter kernelspec list
 	jupyter kernelspec uninstall unwanted-kernel
-	ubuntu -> botao direito mouse -> configurações do aplicativo -> restaurar (reinstala ubuntu, reseta tudo)
+	ubuntu -> botao direito mouse -> configurações do aplicativo -> restaurar (reinstala ubuntu, reseta tudo, CUIDADO!!! FAZER BACKUP DAS PASTAS DO NOTEBOOK!!!)
 
 CRIAR ENVIROMENT E INSTALAR CONDA,CUDNN E TENSORFLOW  (para deep learning):
 

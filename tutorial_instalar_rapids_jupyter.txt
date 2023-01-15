@@ -124,7 +124,7 @@ Editar arquivo .bashrc para automatizar a ativacao do ambiente rapids-20.10 e a 
 
 	>> nano ~/.bashrc
 
-adicionar essas duas linhas no final do arquivo .bashrc:
+adicionar essas Linhas no final do arquivo .bashrc:
 
         
         >> rclone sync /home/mhmatsumura/miniconda3/CIENCIA_DE_DADOS meu_gdrive:/CIENCIA_DE_DADOS_GDRIVE #SINCRONIZAR A PASTA LOCAL NO GOOGGLE DRIVE
@@ -151,7 +151,9 @@ python -m ipykernel install --user --name meu_python_3.10.8 --display-name "meu_
 
 ==============================================================
 	RCLONE PARA FAZER BACKUP NO GOOGLE DRIVE
-========== PARA INSTALAR RCLONE QUANDO APT FALHAR ============
+==============================================================
+
+==== PARA INSTALAR RCLONE QUANDO APT FALHAR ====
 
 colar no arquivo etc/apt/source.list a linha abaixo:
 
@@ -166,19 +168,13 @@ instalar rclone:
 
 sudo apt install rclone
 
-==============================================================
-
-para configurar o remote(MEU_GDRIVE) do gdrive e sincronizar com a pasta local seguir este tutorial:
+==== CONFIGURAR O RCLONE ====
 
 https://ostechnix.com/install-rclone-in-linux/
 
-==============================================================
-
-SINCRONIZAR A PASTA LOCAL NO GOOGGLE DRIVE:
+==== SINCRONIZAR A PASTA LOCAL NO GOOGGLE DRIVE =====
 
 rclone sync /home/mhmatsumura/miniconda3/CIENCIA_DE_DADOS meu_gdrive:/CIENCIA_DE_DADOS_GDRIVE
-
-
 
 ===============================================================
 

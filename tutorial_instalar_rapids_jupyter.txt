@@ -1,4 +1,7 @@
-
+#instalando o auto complete no jupyter notebook
+#!pip install jupyter_contrib_nbextensions
+#!jupyter contrib nbextension install --user
+#!jupyter nbextension enable hinterland/hinterland
 
 
 * COMANDO PARA VERIFICAR NO POWERSHELL A VERSAO DA BUILD DO WINDOWS10.

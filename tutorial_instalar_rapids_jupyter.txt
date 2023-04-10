@@ -3,6 +3,12 @@
 #!jupyter contrib nbextension install --user
 #!jupyter nbextension enable hinterland/hinterland
 
+===========================================================
+	SOLUÇÃO PARA READ-ONLY NOTEBOOK 
+===========================================================
+- sudo chmod 777 miniconda3/MEUS_NOTEBOOKS/*
+===========================================================
+
 
 * COMANDO PARA VERIFICAR NO POWERSHELL A VERSAO DA BUILD DO WINDOWS10.
 

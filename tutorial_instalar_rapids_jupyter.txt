@@ -1,13 +1,156 @@
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install python3 python3-pip
+pip install jupyterlab
+pip install --upgrade jupyter
+pip install --upgrade ipywidgets
+nano ~/.bashrc
+~/.local/bin/jupyter-lab --no-browser
+
+CASO TENHA QUE INSTALAR O WSL MANUALMENTE, SEGUIR A RISCA INSTRUCOES DA MICROSOFT.
+
+https://learn.microsoft.com/pt-br/windows/wsl/install-manual
+
+2. Instalar os drives da NVIDIA (no windows, nunca no wsl):
+
+	https://www.nvidia.com/download/index.aspx
+
+3. Para abrir o console do UBUNTU que foi instalado digitar UBUNTU na caixa de pesquisa do windows.
+
+$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt install build-essential
+
+4. Executar no console do UBUNTU esses dois comandos, um de cada vez para instalar o CONDA (gerenciador de pacotes do anaconda que é um ambiente de desenvolvimento python). O primeiro comando faz o download do bash de instalação do miniconda. O segundo comando executa o bash baixado.:
+
+	>> wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+	>> bash Miniconda3-latest-Linux-x86_64.sh
+		
+4.1 Responda yes pra tudo.
+
+4.2 Quando terminar a instalação do CONDA, Reinicie o console do UBUNTU.
+
+4.3 Faça update do Conda:
+
+	>> conda update conda
+	
+
+4.4 Reinicie o console do UBUNTU.
+
+
+5. Criar env do conda com python
+	
+	>> conda create -n myenv python=3.9
+
+5.1 Se der erro remova os pacotes criados e instale de novo >> conda clean -a
+
+5.2 Se a instalação do Rapids for concluida com sucesso irá aparecer uma mensagem parecida com essa:
+
+	done
+	#
+	# To activate this environment, usey
+	#
+	#     $ conda activate myenv 
+	#
+	# To deactivate an active environment, use
+	#
+	#     $ conda deactivate
+
+5.3 Quando terminar a instalação do rapids ative o ambiente rapids: 
+
+	>>  conda activate myenv 
+         
+6. Instalar o pacote jupyter
+
+	>> conda install jupyter
+
+
+
+7.Editar arquivo .bashrc para automatizar a ativacao do ambiente rapids-20.10 e a inicialização do servidor jupyter:
+
+	>> nano ~/.bashrc
+
+adicionar essas Linhas no final do arquivo .bashrc:
+
+        
+        >> rclone sync /home/mhmatsumura/miniconda3/CIENCIA_DE_DADOS meu_gdrive:/CIENCIA_DE_DADOS_GDRIVE #SINCRONIZAR A PASTA LOCAL NO GOOGGLE DRIVE
+	>> conda activate myenv
+	>> jupyter notebook --no-browser --allow-root
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=====================================================================================
+setar default user wsl 
+
+editor de registreo
+
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Lxss
+
+mudar DefaultUid para 1000 decimal
+
+=====================================================
+PROBLEMA COMPATIBILIDADE JINJA2
+
+pip install jinja2==3.0.3
+pip install nbconvert==6.4.4
+
+=========================================================
+
+pip install pandas
+pip install matplotlib
+pip install xgboost
+pip install lightgbm
+pip install optuna
+pip install -U --pre pycaret
+=====================================================================
 #instalando o auto complete no jupyter notebook
 #!pip install jupyter_contrib_nbextensions
 #!jupyter contrib nbextension install --user
 #!jupyter nbextension enable hinterland/hinterland
 
 ===========================================================
+	BACKUP ANDA RESTORE WSL2 
+===========================================================
+(criar imagem do wsl)
+-> wsl --list
+-> wsl --shutdown
+-> wsl --export <Image Name> <Export location file name.tar>
+-> wsl --export Ubuntu-20.04 C:\Ubuntu.tar
+
+(Para ver o arquivo vhdx(hd virtual))
+-> %userprofile%\AppData\Local\Packages
+-> CanonicalGroupLimited
+
+(Restaurar uma imagemem outro pc por ex.)
+-> wsl --import <Image Name> <Directory where you want to store the imported image> 
+                             <Directory where the exported .tar file exists>
+
+-> wsl --import Ubuntu20.04 c:\documents c:\ubuntu.tar
+-> wsl --import Ubuntu-16.04 C:\Users\mauricio D:\Ubuntu-16.04.tar
+-> wsl --list
+===========================================================
+
+
+
+===========================================================
 	SOLUÇÃO PARA READ-ONLY NOTEBOOK 
 ===========================================================
 - sudo chmod 777 miniconda3/MEUS_NOTEBOOKS/*
 ===========================================================
+
+
 
 
 * COMANDO PARA VERIFICAR NO POWERSHELL A VERSAO DA BUILD DO WINDOWS10.
@@ -53,6 +196,9 @@ Ex: wsl --install -d <DistroName>
 	>> wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 	>> bash Miniconda3-latest-Linux-x86_64.sh
+		ou baixar direto na pagina do miniconda: https://docs.conda.io/en/latest/miniconda.html
+
+		Miniconda3-py310_23.1.0-1-Linux-x86_64
 
 4.1 Responda yes pra tudo.
 
@@ -67,9 +213,10 @@ Ex: wsl --install -d <DistroName>
 
 5. Instalar o rapids usando instruções da nvidia no site https://rapids.ai/start.html#get-rapids. Executar o comando gerado no console Linux(UBUNTU). Eu usei a seguinte configuração(demora 15 minutos dependendo da velocidade da internet):
 
-	>> conda create -n rapids-22.10 -c rapidsai -c nvidia -c conda-forge  \
-    rapids=22.10 python=3.9 cudatoolkit=11.5 \
-    jupyterlab
+	
+	>> conda create -n rapids-23.06 -c rapidsai -c conda-forge -c nvidia rapids=23.06 python=3.10 cudatoolkit=11.8
+
+
 
 
 5.1 Se der erro remova os pacotes criados e instale de novo >> conda clean -a
@@ -80,7 +227,7 @@ Ex: wsl --install -d <DistroName>
 	#
 	# To activate this environment, usey
 	#
-	#     $ conda activate rapids-22.10
+	#     $ conda activate rapids-23.06
 	#
 	# To deactivate an active environment, use
 	#
@@ -88,13 +235,14 @@ Ex: wsl --install -d <DistroName>
 
 5.3 Quando terminar a instalação do rapids ative o ambiente rapids: 
 
-	>> conda activate rapids-22.10
-
-6. Instalar o pacote nb_conda e linkar o ambiente do conda no notebook jupyter usando dois comandos:
+	>>  conda activate rapids-23.06
+         
+6. Instalar o pacote jupyter e linkar o ambiente do conda no notebook jupyter usando dois comandos:
 
 	>> conda install nb_conda
+        
 
-	>> python -m ipykernel install --user --name rapids-22.10 --display-name "Python 3.9 (mauricio_rapids-22.10)"
+	>> python -m ipykernel install --user --name meu_python_3.10.8 --display-name "meu_python_3.10.8"
 
 
 
@@ -137,12 +285,24 @@ adicionar essas Linhas no final do arquivo .bashrc:
 
         
         >> rclone sync /home/mhmatsumura/miniconda3/CIENCIA_DE_DADOS meu_gdrive:/CIENCIA_DE_DADOS_GDRIVE #SINCRONIZAR A PASTA LOCAL NO GOOGGLE DRIVE
-	>> conda activate rapids-22.10
+	>> conda activate rapids-23.06
 	>> jupyter notebook --no-browser 
 
 			OU
 
 	>> jupyter notebook --no-browser --allow-root
+
+instalar nvidia-smi 
+apt-get update
+apt install nvidia-utils-530
+
+sudo apt install nvidia-driver-510
+apt install nvidia-cuda-toolkit
+
+1.Enter BIOS: reboot and power on, as soon as I powered on your pc start tapping the keys untill I entered BIOS
+2.Go to Boot Manager and disable the option Secure Boot . This means , use insecure mode
+3.reboot
+4.nvidia-smi, it worked. Cheers.	
 
 #comando para kill o processo na gpu pelo pid
  	>> nvidia-smi | grep 'python' | awk '{ print $3 }' | xargs -n1 kill -9
@@ -154,8 +314,10 @@ adicionar essas Linhas no final do arquivo .bashrc:
 
 conda create -n meu_python_3.10.8 -c conda-forge python=3.10
 conda activate meu_python_3.10.8
+conda install nb_conda
 python -m ipykernel install --user --name meu_python_3.10.8 --display-name "meu_python_3.10.8"
-
+nano ~/.bashrc
+jupyter notebook --no-browser --allow-root
 ===================================================================================
 
 ==============================================================

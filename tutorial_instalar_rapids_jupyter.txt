@@ -1,11 +1,3 @@
-sudo apt update -y && sudo apt upgrade -y
-sudo apt install python3 python3-pip
-pip install jupyterlab
-pip install --upgrade jupyter
-pip install --upgrade ipywidgets
-nano ~/.bashrc
-~/.local/bin/jupyter-lab --no-browser
-
 CASO TENHA QUE INSTALAR O WSL MANUALMENTE, SEGUIR A RISCA INSTRUCOES DA MICROSOFT.
 
 https://learn.microsoft.com/pt-br/windows/wsl/install-manual
@@ -16,8 +8,7 @@ https://learn.microsoft.com/pt-br/windows/wsl/install-manual
 
 3. Para abrir o console do UBUNTU que foi instalado digitar UBUNTU na caixa de pesquisa do windows.
 
-$ sudo apt update
-$ sudo apt upgrade
+$ sudo apt update -y && sudo apt upgrade -y
 $ sudo apt install build-essential
 
 4. Executar no console do UBUNTU esses dois comandos, um de cada vez para instalar o CONDA (gerenciador de pacotes do anaconda que é um ambiente de desenvolvimento python). O primeiro comando faz o download do bash de instalação do miniconda. O segundo comando executa o bash baixado.:
@@ -40,7 +31,7 @@ $ sudo apt install build-essential
 
 5. Criar env do conda com python
 	
-	>> conda create -n myenv python=3.9
+	>> conda create -n myenv python=3.10
 
 5.1 Se der erro remova os pacotes criados e instale de novo >> conda clean -a
 
@@ -59,6 +50,32 @@ $ sudo apt install build-essential
 5.3 Quando terminar a instalação do rapids ative o ambiente rapids: 
 
 	>>  conda activate myenv 
+
+=== INSTALACAO JUPYTER LAB =======
+
+pip install jupyterlab
+pip install --upgrade jupyter
+pip install --upgrade ipywidgets
+nano ~/.bashrc
+jupyter lab
+
+=== INSTALACAO TENSORFLOW =====
+
+conda install -c conda-forge cudatoolkit=11.8.0
+conda install pip (IMPORTANTE POIS PIP PRECISA VIR DO CONDA)
+python3 -m pip install nvidia-cudnn-cu11==8.6.0.163 tensorflow==2.13.*
+mkdir -p $CONDA_PREFIX/etc/conda/activate.d
+echo 'CUDNN_PATH=$(dirname $(python -c "import nvidia.cudnn;print(nvidia.cudnn.__file__)"))' >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+echo 'export LD_LIBRARY_PATH=$CONDA_PREFIX/lib/:$CUDNN_PATH/lib:$LD_LIBRARY_PATH' >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+source $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+# Verify install:
+python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+
+
+============= FIM  ===================
+
+
+
          
 6. Instalar o pacote jupyter
 

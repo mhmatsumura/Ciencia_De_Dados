@@ -57,6 +57,7 @@ pip install jupyterlab
 pip install --upgrade jupyter
 pip install --upgrade ipywidgets
 nano ~/.bashrc
+conda activate myenv 
 jupyter lab
 
 === INSTALACAO TENSORFLOW =====

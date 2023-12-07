@@ -56,9 +56,9 @@ $ sudo apt install build-essential
 pip install jupyterlab
 pip install --upgrade jupyter
 pip install --upgrade ipywidgets
-nano ~/.bashrc
+code ~/.bashrc
 conda activate myenv 
-jupyter lab
+jupyter lab --no-browser
 
 === INSTALACAO TENSORFLOW =====
 
